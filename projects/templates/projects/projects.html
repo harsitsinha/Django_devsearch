@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+</head>
+<body>
+    {% block content%}
+    <!-- this has to be under block -->
+    <p>Hello this is {{page}}</p>
+    {% if number > 10 %}
+    <p>{{number}} is grater than 10</p>
+    {% elif number == 10 %}
+    <p>{{number}} is equal to 10</p>
+    {% else %}
+    <p>{{number}} is less than 10</p>
+    {% endif %}
+
+    <hr>
+    <h1>Projects</h1>
+    <ul>
+        {% for project in projects %}
+            <li>Title : <a href="{% url 'project' project.id %}">{{project.title}}</a> -- {{project.description}}</li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+
+</body>
+</html>
